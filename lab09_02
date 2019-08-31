@@ -1,0 +1,56 @@
+lists=[]
+
+class Book() :
+    __counter = 0
+
+    def __init__(self, author, title, price, page):
+        self.author = author
+        self.title = title
+        self.price = price
+        self.page = page
+        Book.__counter += 1
+    def __del__(self):
+        Book.__counter -= 1
+    def printBook(self):
+        print('''저자 : %s \n제목 : %s \n가격 : %d원 \n페이지 수 : %d쪽'''
+              % (self.author, self.title, self.price, self.page))
+    def bookInstance():
+        return Book.__counter
+
+while True :
+
+    print("="*50)
+    print("1. 책 추가")
+    print("2. 책 삭제")
+    print("3. 전체 책 출력")
+    print("4. 종료")
+    print('-'*50)
+    choice = int(input("선택 : "))
+    print()
+    
+    if choice == 1 :
+        author = input("작가 : ")
+        title = input("제목 : ")
+        price = int(input("가격 : "))
+        page = int(input("페이지 수 : "))
+        book=Book(author,title,price,page)
+        lists.append(book)
+
+    elif choice == 2 :
+        bye = int(input("삭제할 책의 인덱스를 입력하세요 : "))
+        del lists[bye]
+
+    elif choice == 3 :
+        for i in range(Book.bookInstance()):
+            lists[i].printBook()
+            print()
+            print("전체 책의 개수는 %s개 입니다."%(Book.bookInstance()))
+
+    elif choice==4:
+        break
+
+    else:
+        print("잘못 입력했습니다.")
+
+print()
+print("이용해주셔서 감사합니다.")

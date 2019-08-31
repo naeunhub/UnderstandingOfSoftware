@@ -1,0 +1,55 @@
+import easygui
+import random
+
+
+a = 0
+b = 0
+c = 0
+n = 1
+while a<=3 and b<=3 :
+    if a == 3 :
+        easygui.msgbox("컴퓨터 3 : "+str(b)+" 사용자","\n","컴퓨터가 우승했습니다.")
+        break
+    elif b == 3 :
+        easygui.msgbox("컴퓨터 "+str(a)+" : 사용자 3","\n","당신이 우승했습니다.")
+        break
+    else :
+        computer = random.randint(1,3)
+        user = easygui.buttonbox(str(n)+"번째 판 \n 가위 바위 보 중 하나를 선택하세요", choices = ['가위','바위','보'])
+        if computer == 1 :
+               if user == "가위" :
+                   n=n
+                   easygui.msgbox("모두 가위를 냈습니다. 비겼습니다.","\n","컴퓨터"+str(a)+":"+str(b)+"사용자")
+               elif user == "바위" :
+                   b=b+1
+                   n=n+1
+                   easygui.msgbox("컴퓨터는 가위를 냈습니다. 당신이 이겼습니다.","\n","컴퓨터"+str(a)+":"+str(b)+"사용자")
+               else :
+                   a=a+1
+                   n=n+1
+                   easygui.msgbox("컴퓨터는 가위를 냈습니다. 당신이 졌습니다.","\n","컴퓨터"+str(a)+":"+str(b)+"사용자")
+        elif computer == 2 :
+               if user == "가위" :
+                   a=a+1
+                   n=n+1
+                   easygui.msgbox("컴퓨터는 바위를 냈습니다. 당신이 졌습니다.","\n","컴퓨터"+str(a)+":"+str(b)+"사용자")
+               elif user == "바위" :
+                   n=n
+                   easygui.msgbox("모두 바위를 냈습니다. 비겼습니다.","\n","컴퓨터"+str(a)+":"+str(b)+"사용자")
+               else :
+                   b=b+1
+                   n=n+1
+                   easygui.msgbox("컴퓨터는 바위를 냈습니다. 당신이 이겼습니다.","\n","컴퓨터"+str(a)+":"+str(b)+"사용자")
+        else :
+               if user == "가위" :
+                   b=b+1
+                   n=n+1
+                   easygui.msgbox("컴퓨터는 보를 냈습니다. 당신이 이겼습니다.","\n","컴퓨터"+str(a)+":"+str(b)+"사용자")
+               elif user == "바위" :
+                   a=a+1
+                   n=n+1
+                   easygui.msgbox("컴퓨터는 보를 냈습니다. 당신이 졌습니다.","\n","컴퓨터"+str(a)+":"+str(b)+"사용자")
+               else :
+                   n=n
+                   easygui.msgbox("모두 보를 냈습니다. 비겼습니다.","\n","컴퓨터"+str(a)+":"+str(b)+"사용자")
+

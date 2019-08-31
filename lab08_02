@@ -1,0 +1,87 @@
+from random import shuffle
+from time import time
+types=[]
+num=1
+second=100000
+def play():
+    global types,num
+    del types[0]
+    shuffle(types)
+    test()
+
+def test():
+    global num
+    for i in range(10):
+        print("START! "+str(num))
+        print(types[i])
+        word=input()
+        while word!=types[i]:
+            print("[오타]")
+            print()
+            print("START! "+str(num))
+            print(types[i])
+            word=input()
+        print("[정타]")
+        print()
+        num=num+1
+            
+            
+f=open("words.txt")
+line=f.readline()
+if len(line)!=0:
+  line=line.strip()
+  types.append(line)
+else:
+  f.close()
+
+while True:
+    print("="*50)
+    print("1. 타자 게임(영어단어)")
+    print("2. 단어 추가")
+    print("0. 종료")
+    print("최단기록 : %.2f초"%float(types[0]))
+    print("="*50)
+    choice=int(input("선택 : "))
+    if choice==2:
+        while True:
+            print("추가할 단어를 입력하세요. 끝내려면 엔터를 두 번 입력하세요.")
+            word=input("단어 : ")
+            if len(word)==0:
+               break
+            else:
+               types.append(word)
+
+        print("저장 완료")
+
+    elif choice==0:
+        f=open("words.txt","w")
+        for item in lists:
+               msg=str(item)+"\n"
+               f.write(msg)
+        f.close()
+        break
+
+    elif choice==1:
+            if len(types)<10:
+               print("단어가 10개 미만입니다. 단어를 추가한 뒤에 게임을 실행할 수 있습니다.")
+            else:
+                start=time()
+                play()
+                end=time()
+                time=end-start
+                print("타자 시간: %.2f초"%time)
+                if second>time:
+                   print("***신기록 달성!***")
+                   second=time
+                   types.append(second)
+                   types.reverse()
+
+                else:
+                    second=second
+                    types.append(second)
+                    types.reverse()
+
+    else:
+               print("잘못 입력했습니다. 다시 입력해주세요.")
+
+print("게임을 종료합니다.")

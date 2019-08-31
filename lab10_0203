@@ -1,0 +1,56 @@
+#02
+from tkinter import *
+import time
+
+tk = Tk()
+canvas = Canvas(tk, width = 500, height = 500)
+canvas.pack()
+canvas.create_polygon(250,400,275,450,225,450)
+x=20
+y=20
+
+while True :
+    canvas.move(1,x,y)
+    position = canvas.coords(1)
+    if position[2]>495 or position[4]<5:
+        x=-x
+
+    elif position[1]<5 or position[3]>495:
+        y=-y
+    tk.update()
+    time.sleep(0.2)
+
+#03
+from tkinter import *
+import time
+import random
+colors=["red","blue","orange","yellow","green"]
+
+tk = Tk()
+canvas = Canvas(tk, width = 500, height = 500)
+canvas.pack()
+width = 500
+height = 500
+step = 50
+
+while True :
+    for i in range(10,250,step) :
+        outline=random.choice(colors)
+        x1 = width / 2 - i
+        y1 = height / 2 - i
+        x2 = width / 2 + i
+        y2 = height / 2 + i
+        canvas.create_arc(x1,y1,x2,y2,extent = 359, style = ARC,outline=random.choice(colors))
+        tk.update()
+        time.sleep(0.5)
+        canvas.delete('all')
+
+    for j in range(250,10,-step) :
+        x1 = width / 2 + j
+        y1 = height / 2 + j
+        x2 = width / 2 - j
+        y2 = height / 2 - j
+        canvas.create_arc(x1,y1,x2,y2,extent = 359, style = ARC,outline=random.choice(colors))
+        tk.update()
+        time.sleep(0.5)
+        canvas.delete('all')

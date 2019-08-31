@@ -1,0 +1,110 @@
+print("==============================================")
+print("                  영한사전")
+print("==============================================")
+print("1. 단어 입력")
+print("2. 단어 조회/수정")
+print("3. 단어 삭제")
+print("4. 전체 단어 출력")
+print("5. 단어 시험")
+print("6. 종료")
+print("==============================================")
+choice = int(input("선택 : "))
+print()
+
+words={}
+scores=[]
+
+while choice <= 0 or choice > 6 :
+    print("잘못 입력했습니다. 다시 선택해주세요.")
+    print("==============================================")
+    print("                  영한사전")
+    print("==============================================")
+    print("1. 단어 입력")
+    print("2. 단어 조회/수정")
+    print("3. 단어 삭제")
+    print("4. 전체 단어 출력")
+    print("5. 단어 시험")
+    print("6. 종료")
+    print("==============================================")
+    choice = int(input("선택 : "))
+    print()
+
+while choice != 6 :
+    if choice == 1 :
+        print("저장할 단어를 입력하세요. 끝내시려면 엔터키를 눌러주세요.")
+        while True :
+            print()
+            word = input("단어 : ")
+            if len(word) == 0 :
+                break
+            elif word not in words :
+                kor = input("뜻 : ")
+                words[word] = kor
+            elif word in words :
+                print("이미 존재하는 단어입니다.")
+    elif choice == 2 :
+        print("찾으실 단어를 입력하세요.")
+        word = input("단어 : ")
+        if word in words :
+            print("----------------------------------------------")
+            print(word, " : ", words[word])
+            print("----------------------------------------------")
+            pick = input("수정하시겠습니까?[Y/N] : ")
+            while pick != 'Y' and pick != 'N' :
+                print()
+                print("잘못 입력하셨습니다. 다시 선택해 주세요.")
+                pick = input("수정하시겠습니까?[Y/N] : ")
+            if pick == 'Y' :
+                kor = input("%s : " %word)
+                words[word] = kor
+        else :
+            print(word, "은(는) 사전에 존재하지 않습니다.")
+    elif choice == 3 :
+        print("삭제할 단어를 입력하세요.")
+        word = input("단어 : ")
+        if word in words :
+            del words[word]
+            print("삭제되었습니다.")
+        elif word not in words :
+            print(word, "은(는) 사전에 존재하지 않습니다.")
+    elif choice == 4:
+        print()
+        print("----------------------------------------------")
+        for word in words :
+            print(word, '\t', words[word])
+        print("----------------------------------------------")
+        print()
+
+    elif choice == 5 :
+        score = 0
+        if len(words) == 0 :
+            print("단어가 존재하지 않아 시험이 불가능합니다.")
+        else :
+            for word, kor in words.items() :
+                answer = input('%s : ' %word)
+                if answer == kor :
+                    print("정답입니다.")
+                    print()
+                    score += 1
+                else :
+                    print("오답입니다.")
+                    print()
+            print("총 %d개 정답입니다." %score)
+            scores.append(score)
+
+    print()
+    print("==============================================")
+    print("                  영한사전")
+    print("==============================================")
+    print("1. 단어 입력")
+    print("2. 단어 조회/수정")
+    print("3. 단어 삭제")
+    print("4. 전체 단어 출력")
+    print("5. 단어 시험")
+    print("6. 종료")
+    print("==============================================")
+    choice = int(input("선택 : "))
+    print()
+
+print()
+print("이용해 주셔서 감사합니다")

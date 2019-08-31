@@ -1,0 +1,66 @@
+from tkinter import *
+import time
+import math
+
+tk = Tk()
+canvas = Canvas(tk, width=500, height=500)
+canvas.configure(background='white')
+canvas.pack()
+
+width = 500
+height = 500
+
+cx = width/2       
+cy = height/2       
+
+sr = height/2-50    
+mr = height/2-80	
+hr = height/2-110
+
+daylists=["월","화","수","목","금","토","일"]
+
+while True:
+    t = time.localtime()    
+    hour = (t[3] + t[4]/60)* 30
+    minute = (t[4] + t[5]/60)*6
+    second = t[5]*6
+
+    canvas.delete("all")
+    
+    canvas.create_arc(10,10,width-10,height-10, extent=359,style=CHORD, width = 3, outline='gray')
+
+    for i in range(60) :
+        angle = 6 * i / 360 * math.pi * 2
+        if i % 5 == 0 :
+            canvas.create_line(250+225*math.cos(angle), 250-225*math.sin(angle), 250+240*math.cos(angle), 250-240*math.sin(angle), width=5)
+        else :
+            canvas.create_line(250+230*math.cos(angle), 250-230*math.sin(angle), 250+240*math.cos(angle), 250-240*math.sin(angle), width=2)
+
+    k=t[6]  
+    canvas.create_rectangle(215,420,285,440, width=3, outline='gray')
+    canvas.create_text(251,430,text=str(t[1])+"월"+str(t[2])+"일"+"("+str(daylists[k])+")", fill='purple')
+    
+    if t[3]<12 :
+        canvas.create_rectangle(225,80,275,60, width=3, outline='orange')
+        canvas.create_text(251,70,text="AM",fill='black')
+    else :
+        canvas.create_rectangle(225,80,275,60, width=3, outline='orange')
+        canvas.create_text(251,70,text="PM",fill='black')
+            
+    hx = hr * math.sin(hour/360 * 3.14*2)
+    hy = hr * math.cos(hour/360 * 3.14*2)
+    canvas.create_line(cx, cy, cx+hx, cy-hy, fill='Blue', width = 8)
+    
+    mx = mr * math.sin(minute/360 * 3.14*2)
+    my = mr * math.cos(minute/360 * 3.14*2)
+    canvas.create_line(cx, cy, cx+mx, cy-my, fill='Green', width = 5)
+    
+    sx = sr * math.sin(second/360 * 3.14*2)
+    sy = sr * math.cos(second/360 * 3.14*2)
+    canvas.create_line(cx, cy, cx+sx, cy-sy, fill='Red', width = 2)
+
+    canvas.create_arc(cx-10, cy-10, cx+10, cy+10, extent=359,style=CHORD, width = 2, fill = 'black')
+    
+    time.sleep(0.1)
+    tk.update()
+

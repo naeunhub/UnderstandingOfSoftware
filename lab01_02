@@ -1,0 +1,10 @@
+kor = int(input("국어 점수 : "))
+eng = int(input("영어 점수 : "))
+math = int(input("수학 점수 : "))
+
+total = kor + eng + math
+
+avg = total/3
+
+print("총점 : " + str(total))
+print("평균 : " + str(avg))

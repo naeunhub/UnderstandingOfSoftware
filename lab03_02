@@ -1,0 +1,29 @@
+#S텔레콤 32요금제의 월 이용요금을 계산하는 프로그램
+
+import easygui
+
+name = easygui.enterbox("이름을 입력하세요.")
+minute = easygui.enterbox("음성 통화시간(분)을 입력하세요.")
+message = easygui.enterbox("문자 건수를 입력하세요.")
+data = easygui.enterbox("데이터 사용량(MB)을 입력하세요.")
+
+total = 37400
+
+if int(minute)<=120 :
+    a="0원"
+else :
+    a=(int(minute)-120)*60*1.98
+    total = total + a
+if int(message)<=200 :
+    c="0원"
+else :
+    c=(int(message)-200)*22
+    total = total + c
+if int(data)<=800 :
+    e="0원"
+else :
+    e=(int(data)-800)*55
+    total = total + e
+
+
+easygui.msgbox(name+"님의 4월 이용요금\n32요금제 기본 요금 : 37400원\n음성통화 초과 요금 : "+str(a)+" \n문자 초과요금 : "+str(c)+"\n데이터 사용 초과 요금 : "+str(e)+" \n 총 요금 : "+str(total))

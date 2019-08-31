@@ -1,0 +1,81 @@
+class Book() :
+    __counter = 0
+
+    def __init__(self, author, title, price, page):
+        self.author = author
+        self.title = title
+        self.price = price
+        self.page = page
+        Book.__counter += 1
+    def __del__(self):
+        Book.__counter -= 1
+    def printBook(self):
+        print('''저자 : %s \n제목 : %s \n가격 : %d원 \n페이지 수 : %d쪽'''
+              % (self.author, self.title, self.price, self.page))
+    def bookInstance():
+        return Book.__counter
+
+class Textbook(Book) :
+    def __init__(self, author, title, price, page, subject, major, year, semester):
+        self.subject = subject
+        self.major = major
+        self.year = year
+        self.semester = semester
+        Book.__init__(self, author, title, price, page)
+    def printBook(self):
+        super().printBook()
+        print('''교과목 명 : %s \n전공 : %s \n연도 : %d \n학기 : %s학기'''
+              % (self.subject, self.major, self.year, self.semester))
+
+    def changeSubject(self,subjectC) :
+        self.subject = subjectC
+    def changeYear(self, yearC):
+        self.year = yearC
+    def changeSemester(self, semesterC):
+        self.semester = semesterC
+
+book1 = Book('이기주', '언어의 온도', 13800, 308)
+book2 = Book('조남주', '82년생 김지영', 13000, 192)
+book3 = Book('히가시노 게이고', '나미야 잡화점의 기적', 14800, 456)
+book4 = Book('공지영', '할머니는 죽지 않았다', 12000, 272)
+textbook1 = Textbook('유석종, 이상규, 창병모', 'Python 프로그래밍의 이해', 18000, 320, '프로그래밍의 이해', '컴퓨터과학전공', 2017, 1)
+textbook2 = Textbook('심준호', '데이터베이스프로그래밍', 13000, 258, '데이터베이스프로그래밍', '컴퓨터과학전공', 2016, 1)
+textbook3 = Textbook('Roster Provost and Tom Fawcett', 'Data Science for Business', 37400, 414, '데이터사이언스개론', '소프트웨어융합전공', 2018, 2)
+textbook4 = Textbook('창병모', '유닉스 리눅스 사용해서 프로그래밍까지', 24000, 466, '리눅스시스템', '소프트웨어학부', 2014, 2)
+
+print("="*50)
+book1.printBook()
+print()
+book2.printBook()
+print()
+book3.printBook()
+print()
+book4.printBook()
+print()
+textbook1.printBook()
+print()
+textbook2.printBook()
+print()
+textbook3.printBook()
+print()
+textbook4.printBook()
+print('-'*50)
+print("총 %d권" %Book.bookInstance())
+
+
+del(book3)
+textbook1.changeSubject('소프트웨어의 이해')
+textbook2.changeYear(2017)
+textbook3.changeSemester(1)
+del(textbook4)
+
+print()
+print('='*17, "수정된 목록", '='*17)
+textbook1.printBook()
+print()
+textbook2.printBook()
+print()
+textbook3.printBook()
+print('-'*50)
+print("총 %d권" % Book.bookInstance())
+print('='*50)

@@ -1,0 +1,27 @@
+#과세 표준 금액을 입력 받아 근로소득세를 계산하는 프로그램
+
+while True :
+    money = input("과세 표준 금액을 입력하세요(만원 단위) : ")
+    if len(money)==0 :
+        print("프로그램을 종료합니다.")
+        break
+    else :
+        cnt = int(money)
+        if cnt <= 1200 :
+            a = cnt*0.06
+            print("근로소득세는"+ str(a)+ "만원 입니다.")
+        elif 1200< cnt <= 4600 :
+            b = 72 + (cnt-1200)*0.15
+            print("근로소득세는"+ str(b)+ "만원 입니다.")
+        elif 4600 < cnt <= 8800 :
+            c = 582 + (cnt - 4600) * 0.24
+            print("근로소득세는"+ str(c)+ "만원 입니다.")
+        elif 8800< cnt <= 30000 :
+            d = 1590 + (cnt - 8800) * 0.35
+            print("근로소득세는"+ str(d)+ "만원 입니다.")
+        elif 30000 < cnt :
+            e = 9010 + (cnt - 30000) * 0.38
+            print("근로소득세는"+ str(e)+ "만원 입니다.")
+        else :
+            print("프로그램을 종료합니다.")
+            break

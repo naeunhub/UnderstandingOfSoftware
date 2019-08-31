@@ -1,0 +1,34 @@
+#은행 ATM
+
+print("++++++++++++++++++++++++++++++")
+print("        숙명은행 ATM          ")
+print("++++++++++++++++++++++++++++++")
+name = input("계좌 소유자 이름을 입력하세요 : ")
+print("==============================")
+money = 100000
+while True :
+    print("1. 입금")
+    print("2. 출금")
+    print("3. 잔액 확인")
+    print("4. 종료")
+    print("------------------------------")
+    choice = int(input("선택 : "))
+
+    if choice==1 :
+        get = int(input("입금액 : "))
+        print(get, "원이 입금되었습니다.")
+        money = money + get
+    elif choice==2 :
+        out = int(input("출금액 : "))
+        if out > money :
+            print("잔액이 부족합니다. 인출이 이루어지지 못했습니다.")
+        elif out <= 0 :
+            print("출금액을 정확히 입력하세요,")
+        else :
+            print(out, "원이 인출되었습니다.")
+            money = money - out
+    elif choice==3 :
+        print(name,"님의 현재 잔액은", money, "원 입니다")
+    else :
+        print("이용해 주셔서 감사합니다.")
+        break

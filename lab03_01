@@ -1,0 +1,26 @@
+#난수로 발생된 숫자를 k번 안에 맞추는 프로그램
+
+name = input("이름을 입력하세요 : ")
+chance = int(input("도전 횟수를 입력하세요 : "))
+
+import random
+
+n = random.randint(1,100)
+x = 0
+while chance > 0 :
+    x = int(input(name+" 님의"+str(chance)+"번 째 추측 값을 입력해주세요(1~100) : "))
+    
+    if x == n :
+        print(chance,"번 기회가 남았습니다.")
+        print("정답입니다")
+        break
+    elif x < n :
+        print(x,"는 정답보다 작습니다.")
+    else :
+        print(x,"는 정답보다 큽니다.")
+
+    chance = chance - 1
+    print(chance,"번 기회가 남았습니다.")        
+
+    if chance == 0 :
+       print("더이상 기회가 없습니다. 정답은",n,"입니다.")

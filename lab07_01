@@ -1,0 +1,42 @@
+list=[]
+while True :
+    print("숫자를 입력해 주세요. 끝내시려면 엔터키를 눌러주세요.")
+    num=input()
+    
+    if len(num)==0 :
+        if len(list) == 0 :
+            print("숫자가 존재하지 않습니다.")
+        else :
+            list.sort(reverse=True)
+            print (list)
+            print("====================================================")
+            max = list[0]
+            print("최대값",max)
+            k=len(list)
+            m=int(k/2)
+            min = list[k-1]
+            print("최소값", min)
+            a=(list[m-1]+list[m])/2
+
+            if m%2 == 0 :
+                mid = list[m]
+            else :
+                mid = a
+            print("중간값", mid)
+            print("====================================================")
+            print("점수판")
+            print("====================================================")
+            cnt = 0
+            ran = 0
+            for i in list :
+              rank = 1
+            for i in range(len(list)) :
+                if i - 1 >= 0 :
+                    if(list[i - 1] != list[i]):
+                        rank = i + 1
+                print(rank,"위",list[i])
+                i = i + 1
+        break
+    else :
+        list.append(int(num))
+

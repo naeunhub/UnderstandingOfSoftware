@@ -1,0 +1,22 @@
+#구구단을 한 줄에 3개씩 출력하는 프로그램
+
+print("1단","\t\t\t","2단","\t\t\t","3단","\n")
+for a in range(1,2) :
+    for b in range(2,3) :
+        for c in range(3,4) :
+            for d in range(1,10) :
+                print(a,"*",d,"=",a*d,"\t\t",b,"*",d,"=",b*d,"\t\t",c,"*",d,"=",c*d)
+print(" ")
+print("4단","\t\t\t","5단","\t\t\t","6단","\n")
+for e in range(4,5) :
+    for f in range(5,6) :
+        for g in range(6,7) :
+            for h in range(1,10) :
+                print(e,"*",h,"=",e*h,"\t\t",f,"*",h,"=",f*h,"\t\t",g,"*",h,"=",g*h)
+print(" ")
+print("7단","\t\t\t","8단","\t\t\t","9단","\n")
+for i in range(7,8) :
+    for j in range(8,9) :
+        for k in range(9,10) :
+            for l in range(1,10) :
+                print(i,"*",l,"=",i*l,"\t\t",j,"*",l,"=",j*l,"\t\t",k,"*",l,"=",k*l)
